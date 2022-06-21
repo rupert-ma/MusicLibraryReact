@@ -39,22 +39,21 @@ function App() {
     }
 
     async function deleteSong(id) {
-        console.log(id)
+        console.log(id);
         try {
             await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
-            getAllSongs()
+            getAllSongs();
         } catch (ex) {
-            console.log("Error in DeleteSong API Call")
+            console.log("Error in DeleteSong API Call");
         }
     }
-
 
     return (
         <div>
             <div>
                 <NavBar />
                 {/* <SearchBar /> */}
-                <DisplaySongs songs={songs} deleteSong={deleteSong}/>
+                <DisplaySongs songs={songs} deleteSong={deleteSong} />
                 <AddSongForm addNewSong={addNewSong} />
             </div>
         </div>

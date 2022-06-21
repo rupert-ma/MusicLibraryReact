@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const DisplaySongs = ({ songs, deleteSong  }) => {
+const DisplaySongs = ({ songs, deleteSong }) => {
     console.log(songs);
 
-    function handleDelete(id, event){
+    function handleDelete(id, event) {
         event.preventDefault();
         // let id = id;
-        console.log(id)
+        console.log(id);
         deleteSong(id);
     }
 
@@ -23,7 +23,7 @@ const DisplaySongs = ({ songs, deleteSong  }) => {
             </thead>
             <tbody>
                 {songs.map((song, index) => {
-                    console.log(songs.id)
+                    console.log(songs.id);
                     return (
                         <tr key={index}>
                             <td>{song.title}</td>
@@ -31,7 +31,14 @@ const DisplaySongs = ({ songs, deleteSong  }) => {
                             <td>{song.artist}</td>
                             <td>{song.genre}</td>
                             <td>{song.release_date}</td>
-                            <td><button value={index} onClick={(e)=>handleDelete(song.id, e)}>Delete</button></td>
+                            <td>
+                                <button
+                                    value={index}
+                                    onClick={(e) => handleDelete(song.id, e)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     );
                 })}
