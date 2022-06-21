@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-
-
-const Song = ({song}) => {
+const Song = ({ song }) => {
     return (
         <li>
             <div>
@@ -20,9 +18,8 @@ const Song = ({song}) => {
             <div>
                 <p>{song.release_date}</p>
             </div>
-        </li> 
+        </li>
+    );
+};
 
-     )
-}
- 
 export default Song;

@@ -11,6 +11,10 @@ function App() {
         getAllSongs();
     }, []);
 
+    // useEffect(() => {
+    //      getAllSongs();
+    // }, [songs]);
+
     // add New Song Method
     function addNewSong(newSong) {
         createNewSong(newSong);
@@ -23,33 +27,40 @@ function App() {
         try {
             let response = await axios.get("http://127.0.0.1:8000/music/");
             setSongs(response.data);
-        } catch(ex) {
+        } catch (ex) {
             console.log("Error in getAllSongs API Call!");
         }
     }
 
-    async function createNewSong(newSong){
+    async function createNewSong(newSong) {
         try {
-            let response = await axios.post("http://127.0.0.1:8000/music/", newSong)
-        } catch(ex) {
+            let response = await axios.post(
+                "http://127.0.0.1:8000/music/",
+                newSong
+            );
+        } catch (ex) {
             console.log("Error in createNewSong API Call!");
         }
-
     }
+
+    async function deleteSong(id) {
+        console.log(id)
+        try {
+            await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
+        } catch (ex) {
+            console.log("Error in DeleteSong API Call")
+        }
+    }
+
+
     return (
         <div>
             <div>
                 <NavBar />
                 {/* <SearchBar /> */}
-                <DisplaySongs songs={songs} />
+                <DisplaySongs songs={songs} deleteSong={deleteSong}/>
                 <AddSongForm addNewSong={addNewSong} />
             </div>
-
-            {/* {
-                <div>
-                    <button onClick={getAllSongs}>Click</button>
-                </div>
-            } */}
         </div>
     );
 }
