@@ -11,15 +11,10 @@ function App() {
         getAllSongs();
     }, []);
 
-    // useEffect(() => {
-    //      getAllSongs();
-    // }, [songs]);
-
     // add New Song Method
     function addNewSong(newSong) {
         createNewSong(newSong);
-        let tempNewSongs = [...songs, newSong];
-        setSongs(tempNewSongs);
+        getAllSongs();
     }
 
     // Axios Calls
@@ -47,6 +42,7 @@ function App() {
         console.log(id)
         try {
             await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
+            getAllSongs()
         } catch (ex) {
             console.log("Error in DeleteSong API Call")
         }
