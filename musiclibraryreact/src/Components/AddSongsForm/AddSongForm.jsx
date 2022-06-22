@@ -20,6 +20,11 @@ const AddSongForm = ({ addNewSong }) => {
         };
         console.log(newSong);
         addNewSong(newSong);
+        setTitle("");
+        setArtist("");
+        setGenre("");
+        setRelease_Date("");
+        setAlbum("");
     }
 
     return (
@@ -28,7 +33,7 @@ const AddSongForm = ({ addNewSong }) => {
             <h3> Add a New Song</h3>
             <div>
                 <label>Title</label>
-                <input
+                <input className="newSongInput"
                     type="text"
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
@@ -36,7 +41,7 @@ const AddSongForm = ({ addNewSong }) => {
             </div>
             <div>
                 <label>Album</label>
-                <input
+                <input className="newSongInput"
                     type="text"
                     value={album}
                     onChange={(event) => setAlbum(event.target.value)}
@@ -44,7 +49,7 @@ const AddSongForm = ({ addNewSong }) => {
             </div>
             <div>
                 <label>Artist</label>
-                <input
+                <input className="newSongInput"
                     type="text"
                     value={artist}
                     onChange={(event) => setArtist(event.target.value)}
@@ -52,7 +57,7 @@ const AddSongForm = ({ addNewSong }) => {
             </div>
             <div>
                 <label>Genre</label>
-                <input
+                <input className="newSongInput"
                     type="text"
                     value={genre}
                     onChange={(event) => setGenre(event.target.value)}
@@ -60,7 +65,7 @@ const AddSongForm = ({ addNewSong }) => {
             </div>
             <div>
                 <label>Release Date</label>
-                <input
+                <input className="newSongInput"
                     type="date"
                     value={release_Date}
                     onChange={(event) => setRelease_Date(event.target.value)}

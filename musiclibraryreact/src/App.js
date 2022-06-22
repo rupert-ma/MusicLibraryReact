@@ -22,9 +22,10 @@ function App() {
         console.log(songs);
         let filteredSongs = songs.filter(function (song) {
             if (
-                song.artist.includes(searchTerm) ||
-                song.title.includes(searchTerm) ||
-                song.genre.includes(searchTerm) ||
+                song.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                song.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                song.album.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 song.release_date.includes(searchTerm)
             ) {
                 return true;
@@ -73,7 +74,14 @@ function App() {
             </header>
             <main className="main-container">
                 <div className="main-container">
-                    <SearchBar songs={songs} searchList={searchList} />
+                    <SearchBar searchList={searchList} />
+                    <button
+                        className="button"
+                        style={{ "align-self": "flex-start" }}
+                        onClick={getAllSongs}
+                    >
+                        Reset Filters
+                    </button>
                     <DisplaySongs songs={songs} deleteSong={deleteSong} />
                     <AddSongForm addNewSong={addNewSong} />
                 </div>
