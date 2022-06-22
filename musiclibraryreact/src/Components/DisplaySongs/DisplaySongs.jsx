@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
-const DisplaySongs = ({ songs, deleteSong }) => {
+const DisplaySongs = ({ songs, deleteSong, likeSong }) => {
     console.log(songs);
 
     function handleDelete(id, event) {
         event.preventDefault();
-        // let id = id;
         console.log(id);
         deleteSong(id);
+    }
+
+    function handleLike(id, event) {
+        event.preventDefault();
+        console.log(id);
+        likeSong(id);
     }
 
     return (
@@ -19,6 +24,7 @@ const DisplaySongs = ({ songs, deleteSong }) => {
                     <th >Artist</th>
                     <th >Genre</th>
                     <th >Release Date</th>
+                    <th>Likes</th>
                     <th></th>
                 </tr>
             </thead>
@@ -32,12 +38,19 @@ const DisplaySongs = ({ songs, deleteSong }) => {
                             <td >{song.artist}</td>
                             <td >{song.genre}</td>
                             <td >{song.release_date}</td>
+                            <td >{song.likes}</td>
                             <td >
                                 <button className="button"
                                     value={index}
                                     onClick={(e) => handleDelete(song.id, e)}
                                 >
                                     Delete
+                                </button>
+                                <button className="button"
+                                    value={index}
+                                    onClick={(e) => handleLike(song.id, e)}
+                                >
+                                    Like
                                 </button>
                             </td>
                         </tr>

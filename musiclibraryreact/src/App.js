@@ -35,6 +35,16 @@ function App() {
         setSongs(filteredSongs);
     }
 
+    async function likeSong(id) {
+        console.log(id);
+        try {
+            await axios.patch(`http://127.0.0.1:8000/music/${id}/`);
+            getAllSongs();
+        } catch (ex) {
+            console.log("Error in likeSong API Call");
+        }
+    }
+
     // Axios Calls
     async function getAllSongs() {
         try {
@@ -82,7 +92,7 @@ function App() {
                     >
                         Reset Filters
                     </button>
-                    <DisplaySongs songs={songs} deleteSong={deleteSong} />
+                    <DisplaySongs songs={songs} deleteSong={deleteSong} likeSong={likeSong} />
                     <AddSongForm addNewSong={addNewSong} />
                 </div>
             </main>
