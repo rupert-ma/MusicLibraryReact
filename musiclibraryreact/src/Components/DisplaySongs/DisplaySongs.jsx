@@ -11,14 +11,15 @@ const DisplaySongs = ({ songs, deleteSong }) => {
     }
 
     return (
-        <table>
+        <table className="table-layout">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Album</th>
-                    <th>Artist</th>
-                    <th>Genre</th>
-                    <th>Release Date</th>
+                    <th >Title</th>
+                    <th >Album</th>
+                    <th >Artist</th>
+                    <th >Genre</th>
+                    <th >Release Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +27,13 @@ const DisplaySongs = ({ songs, deleteSong }) => {
                     console.log(songs.id);
                     return (
                         <tr key={index}>
-                            <td>{song.title}</td>
-                            <td>{song.album}</td>
-                            <td>{song.artist}</td>
-                            <td>{song.genre}</td>
-                            <td>{song.release_date}</td>
-                            <td>
-                                <button
+                            <td >{song.title}</td>
+                            <td >{song.album}</td>
+                            <td >{song.artist}</td>
+                            <td >{song.genre}</td>
+                            <td >{song.release_date}</td>
+                            <td >
+                                <button className="button"
                                     value={index}
                                     onClick={(e) => handleDelete(song.id, e)}
                                 >

@@ -23,7 +23,9 @@ const AddSongForm = ({ addNewSong }) => {
     }
 
     return (
+        
         <form onSubmit={handleSubmit}>
+            <h3> Add a New Song</h3>
             <div>
                 <label>Title</label>
                 <input
@@ -64,7 +66,7 @@ const AddSongForm = ({ addNewSong }) => {
                     onChange={(event) => setRelease_Date(event.target.value)}
                 ></input>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="button">Submit</button>
         </form>
     );
 };

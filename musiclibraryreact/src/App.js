@@ -18,11 +18,16 @@ function App() {
         getAllSongs();
     }
 
-    function searchList(searchTerm){
+    function searchList(searchTerm) {
         console.log(songs);
-        let filteredSongs = songs.filter(function(song){
-            if (song.artist.includes(searchTerm) || song.title.includes(searchTerm) || song.genre.includes(searchTerm) || song.release_date.includes(searchTerm)){
-                return true
+        let filteredSongs = songs.filter(function (song) {
+            if (
+                song.artist.includes(searchTerm) ||
+                song.title.includes(searchTerm) ||
+                song.genre.includes(searchTerm) ||
+                song.release_date.includes(searchTerm)
+            ) {
+                return true;
             }
         });
         console.log(filteredSongs);
@@ -45,7 +50,7 @@ function App() {
                 "http://127.0.0.1:8000/music/",
                 newSong
             );
-            getAllSongs()
+            getAllSongs();
         } catch (ex) {
             console.log("Error in createNewSong API Call!");
         }
@@ -63,12 +68,16 @@ function App() {
 
     return (
         <div>
-            <div>
+            <header>
                 <NavBar />
-                <SearchBar songs={songs} searchList={searchList} />
-                <DisplaySongs songs={songs} deleteSong={deleteSong} />
-                <AddSongForm addNewSong={addNewSong} />
-            </div>
+            </header>
+            <main className="main-container">
+                <div className="main-container">
+                    <SearchBar songs={songs} searchList={searchList} />
+                    <DisplaySongs songs={songs} deleteSong={deleteSong} />
+                    <AddSongForm addNewSong={addNewSong} />
+                </div>
+            </main>
         </div>
     );
 }

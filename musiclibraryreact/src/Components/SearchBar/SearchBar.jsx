@@ -17,7 +17,7 @@ const SearchBar = ({songs, searchList}) => {
 
 
     return (
-        <div>
+        <div className="searchbar-container">
             <form onSubmit={handleSubmit}>
                 {/* <select onChange={handleSubmit}>
                     <option value={title} onChange={(event)=>setTitle(event.target.value)}>Title</option>
@@ -26,9 +26,10 @@ const SearchBar = ({songs, searchList}) => {
                     <option value={genre} onChange={(event)=>setGenre(event.target.value)}>Genre</option>
                     <option value={release_Date} onChange={(event)=>setRelease_Date(event.target.value)}>Release Date</option>
                 </select> */}
-                <label>Search Term</label>
-                <input type="text" value={searchTerm} onChange={(event)=>setSearchTerm(event.target.value)}></input>
-                <button type="submit">Filter</button>
+                <label>Songs Filter</label>
+                <input type="text" placeholder="Enter a term to filter by" className="filterInputTextBox" value={searchTerm} onChange={(event)=>setSearchTerm(event.target.value)}></input>
+                <button type="submit" className="button">Filter</button>
+                <button className="button">Reset Filters</button>
             </form>
         </div>
     );
