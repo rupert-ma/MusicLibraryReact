@@ -3,6 +3,7 @@ import axios from "axios";
 import DisplaySongs from "./Components/DisplaySongs/DisplaySongs";
 import NavBar from "./Components/NavBar/NavBar";
 import AddSongForm from "./Components/AddSongsForm/AddSongForm";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
     const [songs, setSongs] = useState([]);
@@ -15,6 +16,17 @@ function App() {
     function addNewSong(newSong) {
         createNewSong(newSong);
         getAllSongs();
+    }
+
+    function searchList(searchTerm){
+        console.log(songs);
+        let filteredSongs = songs.filter(function(song){
+            if (song.artist.includes(searchTerm) || song.title.includes(searchTerm) || song.genre.includes(searchTerm) || song.release_date.includes(searchTerm)){
+                return true
+            }
+        });
+        console.log(filteredSongs);
+        setSongs(filteredSongs);
     }
 
     // Axios Calls
@@ -33,6 +45,7 @@ function App() {
                 "http://127.0.0.1:8000/music/",
                 newSong
             );
+            getAllSongs()
         } catch (ex) {
             console.log("Error in createNewSong API Call!");
         }
@@ -52,7 +65,7 @@ function App() {
         <div>
             <div>
                 <NavBar />
-                {/* <SearchBar /> */}
+                <SearchBar songs={songs} searchList={searchList} />
                 <DisplaySongs songs={songs} deleteSong={deleteSong} />
                 <AddSongForm addNewSong={addNewSong} />
             </div>
